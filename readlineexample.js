@@ -3,12 +3,12 @@
  */
 var readline = require('readline');
 
-var interface = readline.createInterface(process.stdin, process.stdout, null);
+var inter = readline.createInterface(process.stdin, process.stdout, null);
 
-interface.question(">>What is the meaning of life?  ", function (answer){
+inter.question(">>What is the meaning of life?  ", function (answer){
     console.log("About the meaning of life you said " + answer);
-    interface.setPrompt(">>");
-    interface.prompt();
+    inter.setPrompt(">>");
+    inter.prompt();
 });
 
 function closeInteface(){
@@ -16,7 +16,7 @@ function closeInteface(){
     process.exit();
 }
 
-interface.on('line', function(cmd){
+inter.on('line', function(cmd){
     if(cmd.trim() == '.leave'){
         closeInteface();
         return;
@@ -24,10 +24,10 @@ interface.on('line', function(cmd){
         console.log("repeating command: " + cmd);
     }
 
-    interface.setPrompt(">>");
-    interface.prompt();
+    inter.setPrompt(">>");
+    inter.prompt();
 });
 
-interface.on('close', function(){
+inter.on('close', function(){
    closeInteface();
 });
